@@ -14,12 +14,9 @@
       .state('home', {
         url: '/',
         views: {
-          header: {
-            templateUrl: 'app/header/header.html'
-          },
           main: {
-            templateUrl: 'app/home/home.html',
-            controller: 'MainCtrl',
+            templateUrl: 'app/home/home.partial.html',
+            controller: 'HomeCtrl',
             controllerAs: 'vm'
           }
         }

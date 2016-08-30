@@ -13,7 +13,3 @@ div.table .header {
 
 div.table .row {
   background-color: #fff; }
-
-@media print {
-  body {
-    padding-top: 0; } }
