@@ -21,3 +21,33 @@ div.table{
         background-color: #fff;
     }
 }
+
+div.table{
+    div.actions{
+        text-align: center;
+        width:10%;
+        cursor: pointer;
+
+        span{
+            padding: 0px 3px;
+            border-radius: 3px;
+            background-color: #333;
+            color: #fff;
+            width:30%;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+}
+
+div.addPanel{
+    margin-top: 10px;
+    div{
+        padding:5px;
+
+        span{
+            display: inline-block;
+            min-width: 150px;
+        }
+    }
+}

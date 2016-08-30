@@ -1,18 +1,38 @@
 <div class="table">
     <div class="header">
         <div>
-            <span>First Name</span>
+            <span>Name</span>
         </div>
         <div>
-            <span>Last Name</span>
+            <span>Phone Number</span>
         </div>
     </div>
     <div class="row" ng-repeat="contact in vm.contacts track by contact.id">
         <div>
-            {{::contact.firstName}}
+            {{::contact.firstName}} {{::contact.lastName}}
         </div>
         <div>
-            {{::contact.lastName}}
+            {{::contact.phoneNumber}}
         </div>
+    </div>
+</div>
+<div>
+    <button ng-click="vm.addNewContact()">Add</button>
+</div>
+<div class="addPanel" ng-show="vm.showAddEdit">
+    <div>
+        <span>First Name</span>
+        <input type="text" ng-model="vm.tempContact.firstName" />
+    </div>
+    <div>
+        <span>Last Name</span>
+        <input type="text" ng-model="vm.tempContact.lastName" />
+    </div>
+    <div>
+        <span>Phone Number</span>
+         <input type="text" ng-model="vm.tempContact.phoneNumber" />
+    </div>
+    <div>
+        <button ng-click="vm.submitNewContact()">Submit</button>
     </div>
 </div>
