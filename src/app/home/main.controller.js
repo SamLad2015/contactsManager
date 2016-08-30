@@ -6,13 +6,14 @@
     '$scope'
   ];
 
-  function MainCtrl($scope, $state, authService) {
+  function MainCtrl($scope) {
     var vm = this; 
-
+    vm.contacts = [];
     
     activate();
 
     function activate() {
+        
     }
   }
 })();

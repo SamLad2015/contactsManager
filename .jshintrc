@@ -30,8 +30,6 @@
     "L": false,
     "document": true,
     "saveAs": false,
-    "ctMissingData": false,
-    "jQuery": false,
     "HTMLElement": false,
     "Exception": false
   }
