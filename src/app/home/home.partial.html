@@ -1,3 +1,8 @@
+<type-ahead 
+items="vm.contacts" 
+model="searchName" 
+filter-property="'firstName,lastName'" 
+start-search-after-milliseconds="200" />
 <div class="table">
     <div class="header">
         <div>
@@ -34,7 +39,7 @@
     </div>
     <div>
         <span>Phone Number</span>
-         <input type="text" ng-model="vm.tempContact.phoneNumber" />
+        <input type="text" ng-model="vm.tempContact.phoneNumber" />
     </div>
     <div>
         <button ng-click="vm.addEditContact()">Submit</button>

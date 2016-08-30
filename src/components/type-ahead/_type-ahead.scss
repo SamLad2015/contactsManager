@@ -1,0 +1,8 @@
+.search{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.search-box:not(:valid), .search-box:not(:valid):focus {
+    border:1px solid #f00 !important;
+}

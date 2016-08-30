@@ -9,6 +9,7 @@
         vm.addEditContact = addEditContact;
         vm.editContact = editContact;
         vm.deleteContact = deleteContact;
+        vm.filterProperty = 'firstName';
         generateTempContact();
         activate();
 

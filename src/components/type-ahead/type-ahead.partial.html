@@ -1,0 +1,10 @@
+<div class="search">
+<span>Search: </span>
+<input
+    type="text"
+    pattern="^[a-zA-Z0-9_ -]*$"
+    class="search-box"
+    ng-model="model"
+    ng-change="isBeingUsed()"
+    ng-blur="outOfUse()" />
+<div>
