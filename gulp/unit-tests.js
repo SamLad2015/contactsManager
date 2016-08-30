@@ -15,10 +15,7 @@ var bowerDeps = wiredep({
 
 var testFiles = bowerDeps.js.concat([
   'src/{app,components}/**/*.module.js',
-  'src/{app,components}/**/*.js',
-  'test/mock/**/*.js',
-  'test/unit/**/*.js',
-  'test/fixture/*.json'
+  'src/{app,components}/**/*.js'
 ]);
 
 var configFile = 'test/karma.conf.js';
