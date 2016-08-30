@@ -6,13 +6,19 @@
         <div>
             <span>Phone Number</span>
         </div>
+        <div class="actions">
+            Actions
+        </div>
     </div>
     <div class="row" ng-repeat="contact in vm.contacts track by contact.id">
         <div>
             {{::contact.firstName}} {{::contact.lastName}}
         </div>
         <div>
-            {{::contact.phoneNumber}}
+            {{contact.phoneNumber}}
+        </div>
+        <div class="actions">
+            <span ng-click="vm.editContact(contact.id)">Edit</span>
         </div>
     </div>
 </div>
@@ -30,6 +36,6 @@
          <input type="text" ng-model="vm.tempContact.phoneNumber" />
     </div>
     <div>
-        <button ng-click="vm.submitNewContact()">Submit</button>
+        <button ng-click="vm.addEditContact()">Submit</button>
     </div>
 </div>

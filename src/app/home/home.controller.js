@@ -1,13 +1,14 @@
 (function () {
     'use strict';
-    angular.module('employeeManager').controller('HomeCtrl', HomeCtrl);];
+    angular.module('employeeManager').controller('HomeCtrl', HomeCtrl);
 
     function HomeCtrl() {
         var vm = this;
         vm.contacts = [];
         vm.showAddEdit = false;
-        vm.submitNewContact = submitNewContact;
-        generateTemContact();
+        vm.addEditContact = addEditContact;
+        vm.editContact = editContact;
+        generateTempContact();
         activate();
 
         function activate() {
@@ -16,7 +17,7 @@
             vm.contacts.push({ id: 3, firstName: 'Mary', lastName: 'Moe', phoneNumber: '300' });
         }
 
-        function generateTemContact() {
+        function generateTempContact() {
             vm.tempContact = {
                 id: _.max(vm.contacts, function (contact) {
                     return contact.id;
@@ -25,11 +26,22 @@
                 lastName: '',
                 phoneNumber: ''
             };
+            delete vm.selectedContact;
         }
 
-        function submitNewContact() {
-            vm.contacts.push(vm.tempContact);
-            generateTemContact();
+        function addEditContact() {
+            if (typeof vm.selectedContact !== 'undefined') {
+                var selectedContactIndex = vm.contacts.indexOf(vm.selectedContact);
+                vm.contacts[selectedContactIndex] = vm.tempContact;
+            } else {
+                vm.contacts.push(vm.tempContact);
+            }
+            generateTempContact();
+        }
+
+        function editContact(contactId) {
+            vm.selectedContact = _.findWhere(vm.contacts, { id: contactId });
+            vm.tempContact = angular.copy(vm.selectedContact);
         }
     }
 })();
