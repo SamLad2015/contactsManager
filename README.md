@@ -6,10 +6,8 @@ to be able to run it locally please
 
 2) point to local gulp and run npm install
 
-3) run bower install
+ 'gulp build' should build the code
 
-4) 'gulp build' should build the code
+ 'gulp serve' runs the app
 
-5) 'gulp serve' runs the app
-
-6) 'gulp test' runs the jasmine tests
+ 'gulp test' runs the jasmine tests
