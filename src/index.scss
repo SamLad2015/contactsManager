@@ -1,0 +1,7 @@
+@import 'components/type-ahead/type-ahead';
+
+@media print {
+  body {
+    padding-top: 0;
+  }
+}
