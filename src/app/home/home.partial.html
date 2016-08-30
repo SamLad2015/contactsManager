@@ -17,7 +17,7 @@ start-search-after-milliseconds="200" />
     </div>
     <div class="row" ng-repeat="contact in vm.contacts track by contact.id">
         <div>
-            {{::contact.firstName}} {{::contact.lastName}}
+            {{contact.firstName}} {{contact.lastName}}
         </div>
         <div>
             {{contact.phoneNumber}}
