@@ -8,6 +8,7 @@
         vm.showAddEdit = false;
         vm.addEditContact = addEditContact;
         vm.editContact = editContact;
+        vm.deleteContact = deleteContact;
         generateTempContact();
         activate();
 
@@ -42,6 +43,10 @@
         function editContact(contactId) {
             vm.selectedContact = _.findWhere(vm.contacts, { id: contactId });
             vm.tempContact = angular.copy(vm.selectedContact);
+        }
+
+        function deleteContact(contactId){
+            vm.contacts = _.filter(vm.contacts, function (contact){ return contact.id !==  contactId;});
         }
     }
 })();
