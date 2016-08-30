@@ -2,7 +2,11 @@
     'use strict';
     angular.module('employeeManager').controller('HomeCtrl', HomeCtrl);
 
-    function HomeCtrl() {
+    HomeCtrl.$inject = [
+        'localStorageService'
+    ];
+
+    function HomeCtrl(localStorageService) {
         var vm = this;
         vm.contacts = [];
         vm.showAddEdit = false;
@@ -10,20 +14,17 @@
         vm.editContact = editContact;
         vm.deleteContact = deleteContact;
         vm.filterProperty = 'firstName';
-        generateTempContact();
+        vm.saveTolocalStorage = saveTolocalStorage;
         activate();
+        generateTempContact();
 
         function activate() {
-            vm.contacts.push({ id: 1, firstName: 'Tom', lastName: 'Noname', phoneNumber: '100' });
-            vm.contacts.push({ id: 2, firstName: 'John', lastName: 'Doe', phoneNumber: '200' });
-            vm.contacts.push({ id: 3, firstName: 'Mary', lastName: 'Moe', phoneNumber: '300' });
+
         }
 
         function generateTempContact() {
             vm.tempContact = {
-                id: _.max(vm.contacts, function (contact) {
-                    return contact.id;
-                }),
+                id: getCurrentMaxId() + 1,
                 firstName: '',
                 lastName: '',
                 phoneNumber: ''
@@ -31,12 +32,24 @@
             delete vm.selectedContact;
         }
 
+        function getCurrentMaxId() {
+            var maxId = _.max(vm.contacts, function (contact) {
+                return contact.id;
+            }).id;
+            if (maxId > -1) {
+                return maxId;
+            }
+            return 0;
+        }
+
         function addEditContact() {
             if (typeof vm.selectedContact !== 'undefined') {
                 var selectedContactIndex = vm.contacts.indexOf(vm.selectedContact);
-                vm.contacts[selectedContactIndex] = vm.tempContact;
+                vm.contacts[selectedContactIndex] = angular.copy(vm.tempContact);
             } else {
-                vm.contacts.push(vm.tempContact);
+                if (vm.tempContact.firstName !== '' && vm.tempContact.lastName !== '') {
+                    vm.contacts.push(angular.copy(vm.tempContact));
+                }
             }
             generateTempContact();
         }
@@ -46,8 +59,16 @@
             vm.tempContact = angular.copy(vm.selectedContact);
         }
 
-        function deleteContact(contactId){
-            vm.contacts = _.filter(vm.contacts, function (contact){ return contact.id !==  contactId;});
+        function deleteContact(contactId) {
+            vm.contacts = _.filter(vm.contacts, function (contact) { return contact.id !== contactId; });
+        }
+
+        function saveTolocalStorage() {
+            var strToSave='';
+             vm.contacts.forEach(function (contact){
+                strToSave += JSON.stringify(contact);
+             });
+            localStorageService.set('allContacts', strToSave);
         }
     }
 })();
